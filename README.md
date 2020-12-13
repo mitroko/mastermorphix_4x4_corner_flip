@@ -3,6 +3,8 @@
 When solving mastermorfix 4x4, one may face squares corner parity. This makes mastermorfix unsolvable.
 This script helps to solve this parity by quickly swapping two yellow corners between green and red squares.
 
+![squares](squares.png)
+
 Squares elements are coded using triplets:
 - gsy: (g\y - left top to the right bottom diagonal splitted square, green triangle at the left bottom, yellow triangle at the right top corner)
 - ytg: (y/g - left bottom to the right top diagonal splitted square, yellow triangle is at the top left corner and green one is in front at the right bootom corner)
