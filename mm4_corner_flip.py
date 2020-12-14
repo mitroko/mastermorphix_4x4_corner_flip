@@ -12,8 +12,8 @@ from datetime import datetime as _dt
 
 visited_states = []
 max_recursion_level = 10
-_wanted = [ 'bsbbtgbtggsgysggtgytyysg' ]
-_input = 'bsggtbbtbgsgysggtgytyysg'
+_wanted = [ 'rsrrtyrtyysygsyotogtggsy' ]
+_input = 'rsrrtyrtyosogsyytggtgysy'
 max_moves = 20
 start_time = _dt.now()
 _len_size_limit = 240
@@ -274,6 +274,9 @@ if len(_argv) in [3, 4]:
 if len(_argv) == 4:
     print("[*] Recursion level passed as argv")
     max_recursion_level = int(_argv[3])
+if 'r' in _argv:
+    print("[*] Reverse function order requested")
+    all_moves.reverse()
 print("[*] Input: %s" % _input)
 print("[*] Target: %s" % _wanted)
 print("------------------------------------")
