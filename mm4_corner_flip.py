@@ -5,21 +5,21 @@ __copyright__ = "Copyright 2020, Dzmitry Stremkouski."
 __license__ = "GNU Public License 2.0"
 
 from sys import exit as _exit
+from sys import argv as _argv
 from sys import setrecursionlimit as _rlimit
 import copy as _cp
 from datetime import datetime as _dt
 
 visited_states = []
-max_recursion_level = 16
-_wanted = [ 'rsrrtyrtyysygsyotogtggsy' ]
-_input = 'rsrrtyrtyosogsyytygtggsy'
-# _input = 'rsrrtyrtyosogsyytggtgysy'
-max_moves = 250
+max_recursion_level = 10
+_wanted = [ 'bsbbtgbtggsgysggtgytyysg' ]
+_input = 'bsggtbbtbgsgysggtgytyysg'
+max_moves = 20
 start_time = _dt.now()
-_len_size_limit = 120
+_len_size_limit = 240
 all_moves = [ 'r1', 'r2', 'r3', 'l1', 'l2', 'l3', 't1', 't2', 't3', 's1', 's2', 's3']
 _algos = []
-_algos_min = 2
+_algos_min = 10
 _debug = False
 _word_print = False
 _strict = True
@@ -192,6 +192,25 @@ def _xprint(s):
     elif _debug:
         print(s)
 
+def _optimize(_m):
+    for i in _m.split():
+        _m = _m.replace('F U F', 'F F U')
+        _m = _m.replace('U F U', 'U U F')
+    _m = _m.replace('F F F F', ' ').replace('  ',' ')
+    _m = _m.replace('U U U U', ' ').replace('  ',' ')
+    for d in ['R', 'L', 'U', 'F']:
+        _m = _m.replace('%s %s %s' % (d, d, d), "(%s')" % d)
+        _m = _m.replace("%s' %s' %s'" % (d, d, d), "(%s)" % d)
+    for d in ['R', 'L', 'U', 'F', "R'", "L'", "U'", "F'"]:
+        _m = _m.replace('%s %s' % (d, d), "2%s" % d)
+    _m = _m.replace("R U R' R U R' R U R'", "R (U') R'")
+    _m = _m.replace("L U' L' L U' L' L U' L'", "L (U) L'")
+    _m = _m.replace("R U R'", "(R U R')")
+    _m = _m.replace("L U' L'", "(L U' L')")
+    _m = _m.replace("(R U R') (R U R')", "2(R U R')")
+    _m = _m.replace("(L U' L') (L U' L')", "2(L U' L')")
+    return _m
+
 def _brute(cube, level, moves):
 
     global max_recursion_level
@@ -213,15 +232,9 @@ def _brute(cube, level, moves):
             _m = '%s %s' % (_m, _formulas[_static_map[m]])
         _m = _m.strip()
         print("[+] MOVES: %s" % _m)
-        for d in ['R', 'L', 'U', 'F']:
-            _m = _m.replace('%s %s %s' % (d, d, d), "(%s')" % d)
-            _m = _m.replace("%s' %s' %s'" % (d, d, d), "(%s)" % d)
-        for d in ['R', 'L', 'U', 'F', "R'", "L'", "U'", "F'"]:
-            _m = _m.replace('%s %s' % (d, d), "2%s" % d)
-        _m = _m.replace("R U R'", "(R U R')")
-        _m = _m.replace("L U' L'", "(L U' L')")
+        _m = _optimize(_m)
         print("[+] MOVES SHORTENED: %s" % _m)
-        print("[+] MOVES LEN: %s" % str(len(moves)))
+        print("[+] MOVES LEN: %s" % str(len(_m.split())))
         global start_time
         time_elapsed = _dt.now() - start_time
         print('[*] Bruteforced in: {}'.format(time_elapsed))
@@ -254,6 +267,13 @@ _static_map,_static_rmap = _map()
 print("[*] Debug mode: %s" % _debug)
 print("[*] Strict mode: %s" % _strict)
 print("[*] Algos to find min: %s" % str(_algos_min))
+if len(_argv) in [3, 4]:
+    print("[*] Cube states are passed as argv")
+    _input = _argv[1]
+    _wanted = [_argv[2]]
+if len(_argv) == 4:
+    print("[*] Recursion level passed as argv")
+    max_recursion_level = int(_argv[3])
 print("[*] Input: %s" % _input)
 print("[*] Target: %s" % _wanted)
 print("------------------------------------")
