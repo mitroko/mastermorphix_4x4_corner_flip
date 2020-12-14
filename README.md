@@ -5,6 +5,11 @@ This script helps to solve this parity by quickly swapping two yellow corners be
 
 ![squares](squares.png)
 
+Formulas to remember:
+- swap yellow corners: R' 2F U' R 2F U R F L'
+- fix center starting with yellow square: R U R U' R
+- fix center starting with red square: F L (2F U') R L (2F U') L
+
 Squares elements are coded using triplets:
 - gsy: (g\y - left top to the right bottom diagonal splitted square, green triangle at the left bottom, yellow triangle at the right top corner)
 - ytg: (y/g - left bottom to the right top diagonal splitted square, yellow triangle is at the top left corner and green one is in front at the right bootom corner)
@@ -39,6 +44,8 @@ Solid elements of square are coded as two triangles with the same color. Diagona
 
 This script also can help to solve broken square centers. See an example:
 
+![squares-yr](squares-yr.png)
+
     $ ./mm4_corner_flip.py ysrrtyytyrsrgsyytygtggsy rsrrtyrtyysygsyytygtggsy 10
     [*] Debug mode: False
     [*] Strict mode: True
@@ -55,6 +62,8 @@ This script also can help to solve broken square centers. See an example:
     [+] MOVES SHORTENED: (R U R') U (R U R') (U') (R U R')
     [+] MOVES LEN: 11
     [*] Bruteforced in: 0:00:01.415665
+
+![squares-ry](squares-ry.png)
 
     $ ./mm4_corner_flip.py ysrrtyrtrysygsyytygtggsy rsrrtyrtyysygsyytygtggsy 10
     [*] Debug mode: False

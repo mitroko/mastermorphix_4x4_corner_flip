@@ -207,8 +207,8 @@ def _optimize(_m):
     _m = _m.replace("L U' L' L U' L' L U' L'", "L (U) L'")
     _m = _m.replace("R U R'", "(R U R')")
     _m = _m.replace("L U' L'", "(L U' L')")
-    _m = _m.replace("(R U R') (R U R')", "2(R U R')")
-    _m = _m.replace("(L U' L') (L U' L')", "2(L U' L')")
+    _m = _m.replace("(R U R') (R U R')", "(R 2U R')")
+    _m = _m.replace("(L U' L') (L U' L')", "(L 2U' L')")
     return _m
 
 def _brute(cube, level, moves):
