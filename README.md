@@ -39,7 +39,7 @@ Solid elements of square are coded as two triangles with the same color. Diagona
 
 This script also can help to solve broken square centers. See an example:
 
-    $ ./mm4_corner_flip.py ysrrtyytyrsrgsyytygtggsy rsrrtyrtyysygsyytygtggsy 8
+    $ ./mm4_corner_flip.py ysrrtyytyrsrgsyytygtggsy rsrrtyrtyysygsyytygtggsy 10
     [*] Debug mode: False
     [*] Strict mode: True
     [*] Algos to find min: 10
@@ -48,16 +48,33 @@ This script also can help to solve broken square centers. See an example:
     [*] Input: ysrrtyytyrsrgsyytygtggsy
     [*] Target: ['rsrrtyrtyysygsyytygtggsy']
     ------------------------------------
-    [*] Bruteforce started: 2020-12-14 16:16:37.982599
-    [*] Recursion level max: 8
+    [*] Bruteforce started: 2020-12-14 16:19:12.105908
+    [*] Recursion level max: 10
     [+] SOLUTION FOUND
-    [+] MOVES: R U R' R U R' U R U R' R U R' R U R' U U U R U U R'
-    [+] MOVES SHORTENED: 2(R U R') U R (U') R' (U') R 2U R'
+    [+] MOVES: R U R' U R U R' F F F U F U U R U R'
+    [+] MOVES SHORTENED: (R U R') U (R U R') (U') (R U R')
     [+] MOVES LEN: 11
-    [*] Bruteforced in: 0:00:00.128652
+    [*] Bruteforced in: 0:00:01.415665
+
+    $ ./mm4_corner_flip.py ysrrtyrtrysygsyytygtggsy rsrrtyrtyysygsyytygtggsy 10
+    [*] Debug mode: False
+    [*] Strict mode: True
+    [*] Algos to find min: 10
+    [*] Cube states are passed as argv
+    [*] Recursion level is passed as argv
+    [*] Input: ysrrtyrtrysygsyytygtggsy
+    [*] Target: ['rsrrtyrtyysygsyytygtggsy']
+    ------------------------------------
+    [*] Bruteforce started: 2020-12-14 16:29:38.567584
+    [*] Recursion level max: 10
     [+] SOLUTION FOUND
-    [+] MOVES: R U R' R U R' U R U R' F F L U' L' F F
-    [+] MOVES SHORTENED: 2(R U R') U (R U R') 2F (L U' L') 2F
-    [+] MOVES LEN: 12
-    [*] Bruteforced in: 0:00:00.181484
+    [+] MOVES: F L U' L' F F U R U R' F R U R' U U R U R' U U U
+    [+] MOVES SHORTENED: F (L U' L') 2F U (R U R') F (R U R') 2U (R U R') (U')
+    [+] MOVES LEN: 18
+    [*] Bruteforced in: 0:00:02.930354
+    [+] SOLUTION FOUND
+    [+] MOVES: F L U' L' F F U U U R U R' L U' L' F F U U U L U' L'
+    [+] MOVES SHORTENED: F (L U' L') 2F (U') (R U R') (L U' L') 2F (U') (L U' L')
+    [+] MOVES LEN: 17
+    [*] Bruteforced in: 0:00:03.083638
 
