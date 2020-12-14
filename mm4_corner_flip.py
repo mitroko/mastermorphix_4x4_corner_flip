@@ -11,12 +11,12 @@ import copy as _cp
 from datetime import datetime as _dt
 
 visited_states = []
-max_recursion_level = 10
-_wanted = [ 'rsrrtyrtyysygsyotogtggsy' ]
-_input = 'rsrrtyrtyosogsyytggtgysy'
-max_moves = 20
+max_recursion_level = 14
+_wanted = [ 'rsrrtyrtyosogsyytygtggsy' ]
+_input = 'rsrrtyrtyysygsyotogtggsy'
+max_moves = 30
 start_time = _dt.now()
-_len_size_limit = 240
+_len_size_limit = 120
 all_moves = [ 'r1', 'r2', 'r3', 'l1', 'l2', 'l3', 't1', 't2', 't3', 's1', 's2', 's3']
 _algos = []
 _algos_min = 10
@@ -267,12 +267,12 @@ _static_map,_static_rmap = _map()
 print("[*] Debug mode: %s" % _debug)
 print("[*] Strict mode: %s" % _strict)
 print("[*] Algos to find min: %s" % str(_algos_min))
-if len(_argv) in [3, 4]:
+if len(_argv) in [3, 4, 5]:
     print("[*] Cube states are passed as argv")
     _input = _argv[1]
     _wanted = [_argv[2]]
-if len(_argv) == 4:
-    print("[*] Recursion level passed as argv")
+if len(_argv) in [4, 5]:
+    print("[*] Recursion level is passed as argv")
     max_recursion_level = int(_argv[3])
 if 'r' in _argv:
     print("[*] Reverse function order requested")
