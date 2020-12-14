@@ -12,40 +12,37 @@ Squares elements are coded using triplets:
 When crossing the horizont each element changes the order of colors, when crossing any of the borders it changes diagonal angle.
 Solid elements of square are coded as two triangles with the same color. Diagonal direction matters.
 
-    $ ./mm4_corner_flip.py
+    [mirantis@magellan mastermorphix_4x4_corner_flip]$ ./mm4_corner_flip.py r
     [*] Debug mode: False
     [*] Strict mode: True
-    [*] Algos to find min: 2
-    [*] Input: rsrrtyrtyosogsyytygtggsy
-    [*] Target: ['rsrrtyrtyysygsyotogtggsy']
-    ------------------------------------
-    [*] Bruteforce started: 2020-12-13 01:55:50.362227
-    [*] Recursion level max: 16
-    [+] SOLUTION FOUND
-    [+] MOVES: R U R' F U U R U U U R' F F F R U R' L U' U' U' L' F R U R' U F L U' U' U' L' R U U U R' F F R U U U R' F F
-    [+] MOVES SHORTENED: (R U R') F 2U R (U') R' (F') (R U R') L (U) L' F (R U R') U F L (U) L' R (U') R' 2F R (U') R' 2F
-    [+] MOVES LEN: 16
-    [*] Bruteforced in: 0:00:21.391737
-    [+] SOLUTION FOUND
-    [+] MOVES: R U R' F U U R U U U R' F F F R U R' L U' U' U' L' F R U R' U F L U' U' U' L' R U U U R' U U L U' L' U U
-    [+] MOVES SHORTENED: (R U R') F 2U R (U') R' (F') (R U R') L (U) L' F (R U R') U F L (U) L' R (U') R' 2U (L U' L') 2U
-    [+] MOVES LEN: 16
-    [*] Bruteforced in: 0:00:21.423955
-
-This script also can help to solve broken square centers. See an example:
-
-    $ ./mm4_corner_flip.py
-    [*] Debug mode: False
-    [*] Strict mode: True
-    [*] Algos to find min: 2
+    [*] Algos to find min: 10
+    [*] Reverse function order requested
     [*] Input: rsrrtyrtyosogsyytggtgysy
     [*] Target: ['rsrrtyrtyysygsyotogtggsy']
     ------------------------------------
-    [*] Bruteforce started: 2020-12-13 01:54:05.747593
+    [*] Bruteforce started: 2020-12-14 13:18:35.831905
     [*] Recursion level max: 10
     [+] SOLUTION FOUND
     [+] MOVES: F U R U R' R U R' R U R' L U' L' R U R' F R U U U R' F F F
-    [+] MOVES SHORTENED: F U (R U R') (R U R') (R U R') (L U' L') (R U R') F R (U') R' (F')
-    [+] MOVES LEN: 10
-    [*] Bruteforced in: 0:00:03.104765
+    [+] MOVES SHORTENED: F U R (U') R' (L U' L') (R U R') F R (U') R' (F')
+    [+] MOVES LEN: 16
+    [*] Bruteforced in: 0:00:03.118456
+
+This script also can help to solve broken square centers. See an example:
+
+    $ ./mm4_corner_flip.py ysrrtyytyrsrgsyytygtggsy rsrrtyrtyysygsyytygtggsy
+    [*] Debug mode: False
+    [*] Strict mode: True
+    [*] Algos to find min: 10
+    [*] Cube states are passed as argv
+    [*] Input: ysrrtyytyrsrgsyytygtggsy
+    [*] Target: ['rsrrtyrtyysygsyytygtggsy']
+    ------------------------------------
+    [*] Bruteforce started: 2020-12-14 13:26:16.942917
+    [*] Recursion level max: 10
+    [+] SOLUTION FOUND
+    [+] MOVES: R U R' U R U R' F F F U F U U R U R'
+    [+] MOVES SHORTENED: (R U R') U (R U R') (U') (R U R')
+    [+] MOVES LEN: 11
+    [*] Bruteforced in: 0:00:01.379887
 
